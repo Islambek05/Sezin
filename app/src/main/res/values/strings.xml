@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Sezin</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_profile">Profile</string>
+    <string name="login_activity_label">Log in</string>
+    <string name="signup_activity_label">Creating account</string>
+    <string name="firstname_hint">First name</string>
+    <string name="lastname_hint">Last name</string>
+    <string name="email_hint">Email</string>
+    <string name="phone_number_hint">Phone number</string>
+    <string name="password_hint">Password</string>
+    <string name="confirm_password_hint">Confirm password</string>
+    <string name="login">Log In</string>
+    <string name="signup">Sign Up</string>
+    <string name="signup_prompt">Don\'t have an account yet? Sign up</string>
+    <string name="login_prompt">Already have an account? Log in</string>
+    <string name="title_activity_main2">MainActivity2</string>
+</resources>
