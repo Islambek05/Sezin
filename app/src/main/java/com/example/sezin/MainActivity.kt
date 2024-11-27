@@ -17,7 +17,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -25,9 +24,7 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
         navView.setupWithNavController(navController)
 
-
         navView.setOnItemSelectedListener { item ->
-
             if (item.itemId == R.id.navigation_profile) {
                 if (!AuthUtils.isLoggedIn(this)) {
                     startActivity(Intent(this, LoginActivity::class.java))

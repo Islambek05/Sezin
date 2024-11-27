@@ -10,11 +10,12 @@
     <string name="lastname_hint">Тегі</string>
     <string name="email_hint">Электрондық пошта</string>
     <string name="phone_number_hint">Телефон нөмірі</string>
+    <string name="email_or_phone_hint">Электрондық пошта немесе телефон нөмірін енгізіңіз</string>
     <string name="password_hint">Құпия сөз</string>
     <string name="confirm_password_hint">Құпия сөзді растау</string>
     <string name="login">Кіру</string>
     <string name="signup">Тіркелу</string>
     <string name="signup_prompt">Есептік жазбаңыз әлі жоқ па? Тіркелу</string>
     <string name="login_prompt">Есептік жазбаңыз бар ма? Кіру</string>
-    <string name="title_home">Басты бет</string>
+    <string name="title_sos">SOS</string>
 </resources>

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16sp"
+    android:padding="16dp"
     tools:context=".user.login.LoginActivity">
 
         <TextView
@@ -14,33 +14,47 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="170sp"
+            android:layout_marginTop="170dp"
             android:fontFamily="@font/inter_bold"
             android:textColor="?attr/colorOnSecondary"
             android:text="@string/login_activity_label"
-            android:textSize="25sp" />
+            android:textSize="25dp" />
 
         <EditText
-            android:id="@+id/email"
-            android:layout_width="250sp"
+            android:id="@+id/email_or_phone"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:hint="@string/email_hint"
-            android:inputType="textEmailAddress"
-            android:autofillHints="emailAddress"
-            android:minHeight="48sp"
-            android:maxWidth="300sp" />
+            android:hint="@string/email_or_phone_hint"
+            android:autofillHints="emailAddress|phone"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/send_otp_button"
+            android:minHeight="48dp"
+            android:maxWidth="300dp"/>
 
         <EditText
             android:id="@+id/password"
-            android:layout_width="250sp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:hint="@string/password_hint"
             android:inputType="textPassword"
             android:autofillHints="password"
-            android:minHeight="48sp"
-            android:maxWidth="300sp" />
+            android:minHeight="48dp"
+            android:maxWidth="300dp" />
+
+        <EditText
+            android:id="@+id/otp_code"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:hint="OTP Code"
+            android:inputType="number"
+            android:autofillHints="password"
+            android:visibility="gone"
+            android:minHeight="48dp"
+            android:maxWidth="300dp" />
 
         <TextView
             android:id="@+id/signup_prompt"
@@ -49,14 +63,24 @@
             android:layout_gravity="end"
             android:text="@string/signup_prompt"
             android:textColor="?attr/colorPrimary"
-            android:paddingTop="8sp"
-            android:layout_marginEnd="86sp"/>
+            android:paddingTop="8dp"
+            android:layout_marginEnd="86dp"/>
+
+
+        <Button
+            android:id="@+id/send_otp_button"
+            android:layout_width="225dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Send OTP"
+            app:cornerRadius="18dp"
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/login_button"
-            android:layout_width="225sp"
+            android:layout_width="225dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/login"
-            app:cornerRadius="18sp" />
+            app:cornerRadius="18dp" />
 </androidx.appcompat.widget.LinearLayoutCompat>
