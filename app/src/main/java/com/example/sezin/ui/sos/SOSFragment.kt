@@ -11,7 +11,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import com.example.sezin.serversezin.EmergencyContact
 import com.example.sezin.databinding.FragmentSosBinding
 import com.example.sezin.serversezin.EmergencyContactDatabaseHelper
@@ -21,7 +20,6 @@ class SOSFragment : Fragment() {
     private var _binding: FragmentSosBinding? = null
     private val binding get() = _binding!!
     private lateinit var dbHelper: EmergencyContactDatabaseHelper
-    private lateinit var viewModel: SOSViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,7 +28,6 @@ class SOSFragment : Fragment() {
     ): View {
         _binding = FragmentSosBinding.inflate(inflater, container, false)
         dbHelper = EmergencyContactDatabaseHelper(requireContext())
-        viewModel = ViewModelProvider(this).get(SOSViewModel::class.java)
 
         setupButtonListeners()
         requestPermissions()
@@ -57,7 +54,7 @@ class SOSFragment : Fragment() {
     private fun handleHighRiskAlert() {
         val contact = getEmergencyContact()
         if (contact != null) {
-            makeEmergencyCall("+77071050415")
+            makeEmergencyCall(contact.phone)
         } else {
             askForContact()
         }
@@ -97,10 +94,16 @@ class SOSFragment : Fragment() {
     }
 
     private fun sendSOSMessage(phoneNumber: String, dangerLevel: String) {
-        val smsManager = SmsManager.getDefault()
-        val message = "SOS Alert! Danger level: $dangerLevel. Please help!"
-        smsManager.sendTextMessage(phoneNumber, null, message, null, null)
-        Toast.makeText(requireContext(), "SOS message sent to $phoneNumber", Toast.LENGTH_SHORT).show()
+        val subscriptionId = android.telephony.SubscriptionManager.getDefaultSmsSubscriptionId()
+        if (subscriptionId != android.telephony.SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
+            val smsManager = SmsManager.getSmsManagerForSubscriptionId(subscriptionId)
+            val message = "SOS Alert! Danger level: $dangerLevel. Please help!"
+            smsManager.sendTextMessage(phoneNumber, null, message, null, null)
+            Toast.makeText(requireContext(), "SOS message sent to $phoneNumber", Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(requireContext(), "Unable to send SMS. No valid subscription.", Toast.LENGTH_SHORT).show()
+        }
+
     }
 
     private fun makeEmergencyCall(phoneNumber: String) {
